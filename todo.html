@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>todo</title>
+</head>
+
+<body>
+    <h1>TODO LIST !</h1>
+    <div id="todocontainer"></div>
+    <input type="text" placeholder="enter todo"></input>
+    <button onclick="addtodo()">Add</button>
+    <button onclick="deletefirst()">delete first</button>
+    <button onclick="deletelast()">delete last</button>
+
+    <script>
+        let todos=[];
+        function addtodo()
+        {
+            inpelem = document.querySelector("input").value;
+            todos.push( { title : inpelem })
+            reconcile();
+        }
+        function deletefirst()
+        {
+            todos.splice(0,1);
+            reconcile();
+        }
+        function deletelast()
+        {
+            todos.splice(todos.length -1,1);
+            reconcile()
+        }
+        function reconcile()
+        {   document.querySelector("#todocontainer").innerHTML="";
+            for(let i=0; i<todos.length; i++)
+            {
+                divel= document.createElement("div");
+                divel.setAttribute("id",i)
+                inpel=document.createElement("div");
+                inpel.innerHTML=todos[i].title;
+                buttonel=document.createElement("button");
+                buttonel.innerHTML="Delete todo";
+                buttonel.setAttribute( "onclick" , "deletetodo("+i+")");
+                divel.appendChild(inpel);
+                divel.appendChild(buttonel);
+
+                parentel=document.querySelector("#todocontainer");
+                parentel.appendChild(divel);
+                
+            }
+        
+        }
+        function deletetodo(idx)
+        {
+            todos.splice(idx, 1);
+            reconcile();
+        }
+    </script>
+</body>
+
+</html>
