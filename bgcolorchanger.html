@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>bgcolorchanger</title>
+    </head>
+    <body style="background-color : white;" >
+        <div>
+            <button onclick="change('red')" id="red" style="background-color: red;" >RED</button>
+            <button onclick="change('blue')" id="blue" style="background-color: blue;" >BLUE</button>
+            <button onclick="change('green')" id="green" style="background-color: green;" >GREEN</button>
+            <button onclick="change('yellow')" id="yellow" style="background-color: yellow;" >YELLOW</button>
+        </div>
+        <script>
+            function change(clr)
+            {
+                bgelement = document.querySelector("body");
+                bgelement.setAttribute("style","background-color : " + clr)
+            }
+        </script>
+    </body>
+</html>
